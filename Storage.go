@@ -45,13 +45,40 @@ func (this *Storage) HasIndex(name string) bool { // {{{
 	return ok
 } // }}}
 
+func (this *Storage) Index(name string) (IIndex, error) { // {{{
+	if !this.HasIndex(name) {
+		return nil, fmt.Errorf("Index '%s' is not exist", name)
+	}
+
+	return this.indexes[name], nil
+} // }}}
+
 func (this *Storage) CreateIndex(name string, callback Callback) error { // {{{
+	return this.CreateOneToOneIndex(name, callback)
+} // }}}
+
+func (this *Storage) CreateOneToOneIndex(name string, callback Callback) error { // {{{
 	if this.HasIndex(name) {
 		return fmt.Errorf("Index '%s' is already exist", name)
 	}
 	this.indexes[name] = NewIndex()
 	this.callbacks[name] = callback
 
+	return nil
+} // }}}
+
+func (this *Storage) CreateOneToManyIndex(name string, callback Callback) error { // {{{
+	// @TODO:
+	return nil
+} // }}}
+
+func (this *Storage) CreateManyToOneIndex(name string, callback Callback) error { // {{{
+	// @TODO:
+	return nil
+} // }}}
+
+func (this *Storage) CreateManyToManyIndex(name string, callback Callback) error { // {{{
+	// @TODO:
 	return nil
 } // }}}
 

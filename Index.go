@@ -7,7 +7,7 @@ import (
 
 func NewIndex() *Index { // {{{
 	return &Index{
-		data: make(IndexData),
+		data: make(IndexData, 0),
 	}
 } // }}}
 
@@ -17,6 +17,19 @@ type Index struct {
 
 	data IndexData
 }
+
+func (this *Index) Data() IndexData { // {{{
+	return this.data
+} // }}}
+
+func (this *Index) Values() Data { // {{{
+	values := make(Data, 0)
+	for value, _ := range this.data {
+		values = append(values, value)
+	}
+
+	return values
+} // }}}
 
 func (this *Index) Set(key interface{}, value int) { // {{{
 	this.Lock()
