@@ -1,6 +1,6 @@
 package repository
 
-type IIndex interface {
+type IndexInterface interface {
 	Data() IndexData
 	Values() Data
 	Set(key interface{}, value int)

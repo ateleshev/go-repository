@@ -12,7 +12,7 @@ func NewIndex() *Index { // {{{
 } // }}}
 
 type Index struct {
-	IIndex
+	IndexInterface
 	sync.RWMutex
 
 	data IndexData

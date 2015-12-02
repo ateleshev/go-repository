@@ -45,7 +45,7 @@ func (this *Storage) HasIndex(name string) bool { // {{{
 	return ok
 } // }}}
 
-func (this *Storage) Index(name string) (IIndex, error) { // {{{
+func (this *Storage) Index(name string) (IndexInterface, error) { // {{{
 	if !this.HasIndex(name) {
 		return nil, fmt.Errorf("Index '%s' is not exist", name)
 	}
